@@ -71,13 +71,13 @@ public class ModConfig {
     //TODO: Add this, and maybe all other configs to hash structures on init
     public static class ConversionsHoe {
         public String[] blockConversionsHoe = {
-                "minecraft:ice,minecraft:water"
+                "minecraft:sponge:1, minecraft:sponge:0"
         };
     }
 
     public static class ConversionsShovel {
         public String[] blockConversionsShovel = {
-                "minecraft:stone,minecraft:cobblestone"
+                "minecraft:clay:0, minecraft:sand:0"
         };
     }
 
@@ -114,7 +114,6 @@ public class ModConfig {
                 System.err.println("AstikorCarts - Invalid id: " + resourceLocation1 + " OR " + resourceLocation2);
             }
         }
-        System.err.println("AstikorCarts - Shovel Conversion made: " + AstikorCarts.shovelBlockConversionMap.toString());
 
         for (String entry : conversionsHoe.blockConversionsHoe) {
             String[] twoEntries = entry.replace(" ", "").split(",");
