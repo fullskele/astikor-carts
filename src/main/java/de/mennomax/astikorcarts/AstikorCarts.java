@@ -3,9 +3,12 @@ package de.mennomax.astikorcarts;
 import de.mennomax.astikorcarts.capabilities.IPull;
 import de.mennomax.astikorcarts.capabilities.PullFactory;
 import de.mennomax.astikorcarts.capabilities.PullStorage;
+import de.mennomax.astikorcarts.config.ModConfig;
 import de.mennomax.astikorcarts.handler.GuiHandler;
 import de.mennomax.astikorcarts.handler.PacketHandler;
 import de.mennomax.astikorcarts.proxy.IProxy;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -15,6 +18,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Mod(modid = AstikorCarts.MODID, version = AstikorCarts.VERSION, acceptedMinecraftVersions = "[1.12,1.13)")
 public class AstikorCarts
@@ -27,6 +33,9 @@ public class AstikorCarts
 
     @Instance(MODID)
     public static AstikorCarts instance;
+
+    public static Map<IBlockState, IBlockState> hoeBlockConversionMap = new HashMap<>();
+    public static Map<IBlockState, IBlockState> shovelBlockConversionMap = new HashMap<>();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -41,6 +50,7 @@ public class AstikorCarts
     {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         proxy.init();
+        ModConfig.generateMappings();
     }
 
     @EventHandler

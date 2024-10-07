@@ -25,6 +25,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import org.lwjgl.Sys;
 
 public class EntityPlowCart extends AbstractDrawnInventory implements IInventoryChangedListener
 {
@@ -184,6 +185,9 @@ public class EntityPlowCart extends AbstractDrawnInventory implements IInventory
                 default:
                     break;
                 }
+            } else if (AstikorCarts.hoeBlockConversionMap.containsKey(state)) {
+                this.world.setBlockState(pos, AstikorCarts.hoeBlockConversionMap.get(state), 11);
+                damageAndUpdateOnBreak(slot, itemstack, player);
             }
         }
         else if (itemstack.getItem() instanceof ItemSpade)
@@ -191,6 +195,9 @@ public class EntityPlowCart extends AbstractDrawnInventory implements IInventory
             if (block == Blocks.GRASS)
             {
                 this.world.setBlockState(pos, Blocks.GRASS_PATH.getDefaultState());
+                damageAndUpdateOnBreak(slot, itemstack, player);
+            } else if (AstikorCarts.shovelBlockConversionMap.containsKey(block.getDefaultState())) {
+                this.world.setBlockState(pos, AstikorCarts.shovelBlockConversionMap.get(state), 11);
                 damageAndUpdateOnBreak(slot, itemstack, player);
             }
         }
