@@ -97,12 +97,12 @@ public class ModConfig {
 
             ResourceLocation resourceLocation1 = new ResourceLocation(ids1[0], ids1[1]);
             Block block1 = ForgeRegistries.BLOCKS.getValue(resourceLocation1);
-            int meta1 = ids1[2] != null ? Integer.parseInt(ids1[2]) : 0;
+            int meta1 = ids1.length > 2 && ids1[2] != null ? Integer.parseInt(ids1[2]) : 0;
 
 
             ResourceLocation resourceLocation2 = new ResourceLocation(ids2[0], ids2[1]);
             Block block2 = ForgeRegistries.BLOCKS.getValue(resourceLocation2);
-            int meta2 = ids1[2] != null ? Integer.parseInt(ids2[2]) : 0;
+            int meta2 = ids2.length > 2 && ids2[2] != null ? Integer.parseInt(ids2[2]) : 0;
 
 
             if (block1 != null && block2 != null) {
@@ -129,12 +129,12 @@ public class ModConfig {
 
             ResourceLocation resourceLocation1 = new ResourceLocation(ids1[0], ids1[1]);
             Block block1 = ForgeRegistries.BLOCKS.getValue(resourceLocation1);
-            int meta1 = ids1[2] != null ? Integer.parseInt(ids1[2]) : 0;
+            int meta1 = ids1.length > 2 && ids1[2] != null ? Integer.parseInt(ids1[2]) : 0;
 
 
             ResourceLocation resourceLocation2 = new ResourceLocation(ids2[0], ids2[1]);
             Block block2 = ForgeRegistries.BLOCKS.getValue(resourceLocation2);
-            int meta2 = ids1[2] != null ? Integer.parseInt(ids2[2]) : 0;
+            int meta2 = ids2.length > 2 && ids2[2] != null ? Integer.parseInt(ids2[2]) : 0;
 
 
             if (block1 != null && block2 != null) {

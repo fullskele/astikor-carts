@@ -196,7 +196,7 @@ public class EntityPlowCart extends AbstractDrawnInventory implements IInventory
             {
                 this.world.setBlockState(pos, Blocks.GRASS_PATH.getDefaultState());
                 damageAndUpdateOnBreak(slot, itemstack, player);
-            } else if (AstikorCarts.shovelBlockConversionMap.containsKey(block.getDefaultState())) {
+            } else if (AstikorCarts.shovelBlockConversionMap.containsKey(state)) {
                 this.world.setBlockState(pos, AstikorCarts.shovelBlockConversionMap.get(state), 11);
                 damageAndUpdateOnBreak(slot, itemstack, player);
             }
