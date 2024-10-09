@@ -25,7 +25,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import org.lwjgl.Sys;
+
+import java.util.Map;
 
 public class EntityPlowCart extends AbstractDrawnInventory implements IInventoryChangedListener
 {
@@ -92,7 +93,7 @@ public class EntityPlowCart extends AbstractDrawnInventory implements IInventory
                         {
                             handleTool(blockPos, i, player);
                         }
-                        else if (upMaterial == Material.PLANTS || upMaterial == Material.VINE)
+                        else if (upMaterial == Material.PLANTS || upMaterial == Material.VINE || AstikorCarts.foliageBreakSet.contains(this.world.getBlockState(upPos)))
                         {
                             this.world.destroyBlock(upPos, false);
                             handleTool(blockPos, i, player);
@@ -198,6 +199,14 @@ public class EntityPlowCart extends AbstractDrawnInventory implements IInventory
                 damageAndUpdateOnBreak(slot, itemstack, player);
             } else if (AstikorCarts.shovelBlockConversionMap.containsKey(state)) {
                 this.world.setBlockState(pos, AstikorCarts.shovelBlockConversionMap.get(state), 11);
+                damageAndUpdateOnBreak(slot, itemstack, player);
+            }
+        } else if (AstikorCarts.customConversionMap.containsKey(state)) {
+            Map<Item, IBlockState> itemConversionMap = AstikorCarts.customConversionMap.get(state);
+
+            if (itemConversionMap.containsKey(itemstack.getItem())) {
+                IBlockState newState = itemConversionMap.get(itemstack.getItem());
+                this.world.setBlockState(pos, newState, 11);
                 damageAndUpdateOnBreak(slot, itemstack, player);
             }
         }

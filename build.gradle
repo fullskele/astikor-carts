@@ -13,7 +13,7 @@ apply plugin: 'maven-publish'
 
 version = "1.12.2-0.1.2.7"
 group = "de.mennomax.astikorcarts" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "astikorcarts"
+archivesBaseName = "astikorcarts-deluxe"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 

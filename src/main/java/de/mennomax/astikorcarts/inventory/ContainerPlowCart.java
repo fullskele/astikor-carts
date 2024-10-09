@@ -1,5 +1,6 @@
 package de.mennomax.astikorcarts.inventory;
 
+import de.mennomax.astikorcarts.AstikorCarts;
 import de.mennomax.astikorcarts.entity.AbstractDrawn;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -99,7 +100,7 @@ public class ContainerPlowCart extends Container
         
         public boolean isItemValid(ItemStack stack)
         {
-            return stack.getItem() instanceof ItemHoe || stack.getItem() instanceof ItemSpade;
+            return stack.getItem() instanceof ItemHoe || stack.getItem() instanceof ItemSpade || AstikorCarts.allowedToolSet.contains(stack.getItem());
         }
     }
 
