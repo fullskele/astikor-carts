@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'maven-publish'
 
-version = "1.12.2-0.1.2.7"
+version = "1.12.2-0.1.2.8"
 group = "de.mennomax.astikorcarts" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "astikorcarts-deluxe"
 
